@@ -27,7 +27,7 @@
     <div class="wrapper">
     {#each results as notice}
         <div id="new" in:fly="{{ y: 200, duration: 2000 }}" out:fade>
-            <img src="{notice.urlToImage}" alt="no-photo" width="280px">
+            <img src={notice.urlToImage} alt="no-photo" width="280px">
             <h1>{notice.title}</h1>
             <span>{notice.author}</span>
             <p>{notice.description}</p>
