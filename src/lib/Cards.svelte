@@ -1,20 +1,42 @@
 <script>
     const categories = ["general", "business", "entertainment", "health", "science", "sport", "technology"]
-    let current = 'general'
+    const countries = ["us", "mx"]
+
+	import { currentCountry, currentCategory } from './stores'
+
+	const changeCategory = (category) => {
+		currentCategory.set(category)
+		console.log($currentCategory)
+	}
+	const changeCountry = (country) => {
+		currentCountry.set(country)
+		console.log($currentCountry)
+	}
 </script>
 
 <main>
     <div>
+	{#each countries as country}
+	    <button 
+	 class:selected="{$currentCountry === country}"
+	 on:click="{() => changeCountry(country)}"
+	 >{country.toUpperCase()}</button>
+	{/each}
+    </div>
+    <div>
 	{#each categories as category}
 	    <button 
-	 class:selected="{current === category}"
-	 on:click="{() => current = category}"
+	 class:selected="{$currentCategory === category}"
+	 on:click="{() => changeCategory(category)}"
 	 >{ category[0].toUpperCase() + category.substring(1) }</button>
 	{/each}
     </div>
 </main>
 
 <style>
+    div {
+	padding-left: 4rem;
+    }
     button {
 	outline: none;
 	border: 1px solid #928374;
