@@ -4,9 +4,11 @@
 	import { currentCountry, currentCategory } from './stores'
     const apiKey = "cdfccdbeeda14397a91a21b720361993"
 
-    const URL = `https://newsapi.org/v2/top-headlines?country=${$currentCountry}&category=${$currentCategory}&apiKey=${apiKey}`
-
-    $: results = []
+    $: URL = `https://newsapi.org/v2/top-headlines?country=${$currentCountry}&category=${$currentCategory}&apiKey=${apiKey}`
+    let results = []
+    $: if (URL) {
+        runNews()
+    }
 
     const runNews = async () => {
         const res = await fetch(URL)

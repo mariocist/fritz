@@ -1,6 +1,6 @@
 <main>
     <div>
-	<h1>The Fritz</h1>
+	<h1>News API</h1>
     </div>
 </main>
 
